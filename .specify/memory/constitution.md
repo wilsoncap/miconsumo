@@ -44,10 +44,12 @@ viven en la UI, no pueden verificarse ni auditarse.
 
 ### V. Puertas de Calidad (INNEGOCIABLE)
 
-Antes de dar por terminada una funcionalidad DEBEN pasar sin errores: `dart format`, `flutter
-analyze` (cero advertencias) y `flutter test`. DEBEN existir pruebas unitarias para toda regla de
-dominio y para todo ViewModel con lógica. Las vistas DEBEN cubrirse con pruebas de widget cuando su
-comportamiento no sea trivial, y el sistema de diseño DEBE cubrirse con pruebas golden.
+Antes de dar por terminada una funcionalidad DEBEN pasar sin errores: `dart format`, `dart analyze`
+(cero advertencias) y `flutter test`. Se usa `dart analyze` y NO `flutter analyze`, porque solo el
+primero ejecuta los plugins del analizador —entre ellos `riverpod_lint`, declarado en
+`analysis_options.yaml`—. DEBEN existir pruebas unitarias para toda regla de dominio y para todo
+ViewModel con lógica. Las vistas DEBEN cubrirse con pruebas de widget cuando su comportamiento no sea
+trivial, y el sistema de diseño y los componentes DEBEN cubrirse con pruebas golden.
 
 **Justificación**: sin una barrera automática, la evidencia y los cálculos del dominio se degradan
 sin que nadie lo note.
@@ -210,4 +212,4 @@ Esta constitución prevalece sobre cualquier otra práctica del proyecto.
 - **Guía de desarrollo**: esta constitución junto con las especificaciones vigentes. El `README.md` y
   las notas del agente pueden añadir guía no normativa.
 
-**Version**: 2.3.0 | **Ratified**: 2026-10-18 | **Last Amended**: 2026-10-18
+**Version**: 2.3.1 | **Ratified**: 2026-10-18 | **Last Amended**: 2026-10-18

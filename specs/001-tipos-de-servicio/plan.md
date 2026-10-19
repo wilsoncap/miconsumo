@@ -58,7 +58,7 @@ Gates derivados de la constitución v2.3.0:
 | II — Integridad de la Evidencia | El sistema NUNCA ofrece eliminar un servicio; solo desactivar y reactivar (FR-015) | PASS |
 | III — Precisión Numérica | Esta funcionalidad no maneja montos ni consumos; solo nombres, unidades y una etiqueta. Se aplicará al introducir conceptos de facturación | N/A |
 | IV — Dominio Puro | La normalización y unicidad del nombre, y la regla de unidad inmutable, son funciones puras en `domain/` | PASS |
-| V — Puertas de Calidad | Plan de pruebas cubre dominio, ViewModel, vistas y goldens; `dart format`, `flutter analyze`, `flutter test` | PASS |
+| V — Puertas de Calidad | Plan de pruebas cubre dominio, ViewModel, vistas y goldens; `dart format`, `dart analyze`, `flutter test` | PASS |
 | VI — Sin Publicidad ni Rastreo | No se añade ningún SDK de terceros con red | PASS |
 | VII — Vigencia Temporal | Esta funcionalidad no introduce valores con vigencia temporal. Se aplicará a los conceptos de facturación | N/A |
 | Arquitectura — MVVM | `presentation/{view,view/widgets,viewmodel,state}`; `domain/` en Dart puro; DI con Riverpod | PASS |

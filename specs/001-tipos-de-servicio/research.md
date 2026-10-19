@@ -103,11 +103,21 @@ tecnología y las prácticas asociadas, con la alternativa que se descartó y el
 ## R9. Reglas de calidad y linting
 
 - **Decision**: `flutter_lints` como base, ampliado con `require_trailing_commas`,
-  `prefer_single_quotes`, `unawaited_futures`, `always_declare_return_types` y `avoid_dynamic_calls`.
-  Se añade `custom_lint` + `riverpod_lint` para las reglas específicas de Riverpod.
+  `prefer_single_quotes`, `unawaited_futures`, `always_declare_return_types` y `avoid_dynamic_calls`,
+  más reglas de estilo (`prefer_const_constructors`, `prefer_final_locals`, `directives_ordering`,
+  `sort_child_properties_last`, `avoid_print`). Se añade `riverpod_lint`, declarado bajo la clave
+  `plugins:` de `analysis_options.yaml`.
 - **Rationale**: las puertas del Principio V solo son fiables si el analizador detecta antes lo que un
   test no cubre. `riverpod_lint` señala usos incorrectos de `ref` que de otro modo aparecen en
   ejecución.
+- **Verificado en el entorno**: `riverpod_lint` 3.x **ya no usa `custom_lint`**; se implementa con
+  `analysis_server_plugin` y se instala desde `analysis_options.yaml` con la clave `plugins:`. Añadir
+  `custom_lint` provoca un conflicto de versiones con `analyzer_plugin` (0.13.x frente a 0.14.x), así
+  que NO debe añadirse.
+- **Consecuencia en las puertas de calidad**: **`flutter analyze` NO ejecuta los plugins del
+  analizador; `dart analyze` sí.** Comprobado en el entorno: con el mismo código, `flutter analyze`
+  informa de cero incidencias mientras `dart analyze` reporta el aviso `missing_provider_scope`. Por eso
+  la puerta de calidad usa `dart analyze`.
 - **Alternatives considered**: `flutter_lints` por defecto (demasiado permisivo);
   `very_good_analysis` (excelente, pero impone documentación pública obligatoria que no aporta en una
   app de un solo desarrollador).

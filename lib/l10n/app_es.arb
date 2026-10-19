@@ -1,0 +1,33 @@
+{
+  "@@locale": "es",
+
+  "appTitle": "Mi Consumo",
+  "@appTitle": {
+    "description": "Nombre de la aplicación, mostrado en la barra superior."
+  },
+
+  "accionReintentar": "Reintentar",
+  "@accionReintentar": {
+    "description": "Acción para volver a intentar una operación que falló."
+  },
+
+  "accionGuardar": "Guardar",
+  "@accionGuardar": {
+    "description": "Acción para guardar un formulario."
+  },
+
+  "accionCancelar": "Cancelar",
+  "@accionCancelar": {
+    "description": "Acción para abandonar un formulario sin guardar."
+  },
+
+  "errorInesperado": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+  "@errorInesperado": {
+    "description": "Mensaje genérico cuando falla una operación."
+  },
+
+  "pantallaTemporalMensaje": "Tema, base de datos y navegación en marcha.",
+  "@pantallaTemporalMensaje": {
+    "description": "TEMPORAL: mensaje de la pantalla provisional que sustituyen las pantallas de la historia 1. Se elimina en T037."
+  }
+}

@@ -34,11 +34,11 @@ componen**. Cada parte visual es un componente en `view/widgets/` que recibe sus
 **Purpose**: Inicialización del proyecto y de la infraestructura compartida
 
 - [ ] T001 Crear la estructura de carpetas del plan: `lib/app/{router,di}`, `lib/core/{error,ui/theme,ui/widgets,utils}`, `lib/features/servicios/{domain/{entities,value_objects,repositories,usecases},data/{local,mappers,repositories},presentation/{view/widgets,viewmodel,state}}` y su reflejo exacto en `test/`
-- [ ] T002 Añadir a `pubspec.yaml` las dependencias de `plan.md`: `flutter_riverpod`, `riverpod_annotation`, `drift`, `go_router`, `freezed_annotation`, `intl`, `flutter_localizations`, `path_provider`, `path`; y en `dev_dependencies`: `build_runner`, `riverpod_generator`, `drift_dev`, `freezed`, `custom_lint`, `riverpod_lint`. **NO añadir `sqlite3_flutter_libs`**: está obsoleto desde `sqlite3` 3.x, que empaqueta SQLite por sí mismo. Ejecutar `flutter pub get` (requiere red: `freezed`, `custom_lint` y `riverpod_lint` no están en la caché local)
-- [ ] T003 [P] Endurecer `analysis_options.yaml` con las reglas de R9: `require_trailing_commas`, `prefer_single_quotes`, `unawaited_futures`, `always_declare_return_types`, `avoid_dynamic_calls`, y activar el plugin `custom_lint`
+- [ ] T002 Añadir a `pubspec.yaml` las dependencias de `plan.md`: `flutter_riverpod`, `riverpod_annotation`, `drift`, `go_router`, `freezed_annotation`, `intl`, `flutter_localizations`, `path_provider`, `path`; y en `dev_dependencies`: `build_runner`, `riverpod_generator`, `drift_dev`, `freezed`, `riverpod_lint`. **NO añadir `sqlite3_flutter_libs`** (obsoleto desde `sqlite3` 3.x, que empaqueta SQLite por sí mismo) **ni `custom_lint`** (ya no lo usa `riverpod_lint`, y provoca un conflicto de versiones con `analyzer_plugin`). Ejecutar `flutter pub get` (requiere red: `freezed` y `riverpod_lint` no están en la caché local)
+- [ ] T003 [P] Endurecer `analysis_options.yaml` con las reglas de R9: `require_trailing_commas`, `prefer_single_quotes`, `unawaited_futures`, `always_declare_return_types`, `avoid_dynamic_calls`, más reglas de estilo. Declarar el plugin `riverpod_lint` bajo la clave `plugins:` (NO con `custom_lint`), que es como se instala desde la versión 3.x
 - [ ] T004 [P] Configurar la localización: crear `l10n.yaml` con `es_CO` como locale base, crear `lib/l10n/app_es_CO.arb` y activar `generate: true` en la sección `flutter` de `pubspec.yaml`
 - [ ] T005 [P] Definir los tokens de diseño en `lib/core/ui/theme/app_tokens.dart` como `ThemeExtension` (espaciados, radios, duraciones, tipografía) y el tema en `lib/core/ui/theme/app_theme.dart` con `ColorScheme.fromSeed` para claro y oscuro
-- [ ] T006 Ejecutar `dart run build_runner build --delete-conflicting-outputs` y verificar que el proyecto compila con `flutter analyze` sin incidencias. La primera compilación descarga los binarios de SQLite desde las *releases* del paquete, así que requiere red; la aplicación en ejecución sigue funcionando sin conexión
+- [ ] T006 Ejecutar `dart run build_runner build --delete-conflicting-outputs` y verificar que el proyecto compila con `dart analyze` sin incidencias. La primera compilación descarga los binarios de SQLite desde las *releases* del paquete, así que requiere red; la aplicación en ejecución sigue funcionando sin conexión
 
 ---
 
@@ -113,7 +113,7 @@ necesidad de abrir el detalle (SC-006)
 - [ ] T037 [US1] Crear la pantalla de listado en `lib/features/servicios/presentation/view/lista_servicios_page.dart` como `ConsumerWidget`: lee el estado del ViewModel y lo traduce a `EstadoVacio` o a una colección de `FilaDeServicio`, y conecta la navegación al detalle. Sin construir partes visuales propias
 - [ ] T038 [US1] Crear la pantalla de detalle y creación en `lib/features/servicios/presentation/view/detalle_servicio_page.dart` como `ConsumerWidget`: lee el formulario del ViewModel y lo compone con `SelectorDeUnidad` y `CampoDeEtiqueta`, más el campo de nombre. Sin construir partes visuales propias
 - [ ] T039 [US1] Verificar que las pruebas de `test/features/servicios/domain/nombre_de_servicio_test.dart`, `test/features/servicios/data/servicio_repository_impl_test.dart`, `test/features/servicios/presentation/viewmodel/detalle_servicio_viewmodel_test.dart` y `test/features/servicios/presentation/viewmodel/lista_servicios_viewmodel_test.dart` pasan
-- [ ] T040 [US1] Verificar que las pruebas de widget de `test/features/servicios/presentation/view/` y de `test/features/servicios/presentation/view/widgets/` pasan, y que `flutter analyze` sigue sin incidencias
+- [ ] T040 [US1] Verificar que las pruebas de widget de `test/features/servicios/presentation/view/` y de `test/features/servicios/presentation/view/widgets/` pasan, y que `dart analyze` sigue sin incidencias
 
 **Checkpoint**: la historia 1 funciona por sí sola y es el MVP
 
@@ -155,7 +155,7 @@ y reactivarlo
 - [ ] T052 [P] Prueba de la función `puedeCambiarUnidad` en `test/features/servicios/domain/puede_cambiar_unidad_test.dart`, cubriendo ambos resultados (FR-006)
 - [ ] T053 [P] Prueba de migración en `test/features/servicios/data/migracion_test.dart`: abrir una base con el esquema anterior y verificar que los datos sobreviven
 - [ ] T054 Revisar accesibilidad en las dos pantallas y en los componentes: etiquetas `Semantics`, áreas táctiles de al menos 48 dp, soporte del escalado de texto y contraste AA
-- [ ] T055 Ejecutar `dart format`, `flutter analyze` y `flutter test`, y corregir todo lo que aparezca hasta que las tres pasen sin incidencias
+- [ ] T055 Ejecutar `dart format`, `dart analyze` y `flutter test`, y corregir todo lo que aparezca hasta que las tres pasen sin incidencias
 - [ ] T056 Recorrer los escenarios E1–E8 de `specs/001-tipos-de-servicio/quickstart.md` en un dispositivo y registrar el resultado de cada uno
 - [ ] T057 [P] Actualizar `README.md` con la estructura del proyecto, cómo ejecutar las pruebas y las decisiones de arquitectura relevantes
 

@@ -14,7 +14,7 @@ errores de negocio son valores, no fallos del sistema.
 ```text
 Resultado<T>
 ├── Exito<T>(valor)
-└── Fallo(Fallo)
+└── Fallo<T>(motivo: MotivoDeFallo)
 ```
 
 ## Fallos previstos
@@ -22,6 +22,7 @@ Resultado<T>
 | Fallo | Cuándo ocurre | Requisito |
 |---|---|---|
 | `NombreVacio` | El nombre queda vacío tras recortar espacios | FR-002 |
+| `NombreDemasiadoLargo` | El nombre supera la longitud máxima admitida | FR-002 |
 | `NombreDuplicado` | Ya existe un servicio con el mismo nombre normalizado | FR-003 |
 | `UnidadRequerida` | No se seleccionó unidad | FR-004 |
 | `UnidadInmutable` | Se intenta cambiar la unidad de un servicio con mediciones | FR-006 |

@@ -23,12 +23,13 @@ dart run build_runner build --delete-conflicting-outputs
 
 ```bash
 dart format --set-exit-if-changed .
-flutter analyze
+dart analyze
 flutter test
 ```
 
-Las tres DEBEN terminar sin errores ni advertencias (Principio V). `flutter analyze` debe reportar cero
-incidencias.
+Las tres DEBEN terminar sin errores ni advertencias (Principio V). `dart analyze` debe reportar cero
+incidencias. Se usa `dart analyze` y no `flutter analyze` porque solo el primero ejecuta el plugin
+`riverpod_lint`.
 
 ## Escenarios de validación manual
 

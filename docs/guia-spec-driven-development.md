@@ -126,7 +126,8 @@ Esta sección existe para que puedas volver a ella. No hace falta memorizar nada
 | **Lint** | Un revisor automático de estilo. Avisa de cosas como "esta variable no se usa" o "falta una coma". |
 | **Puerta de calidad** | Un conjunto de comprobaciones que deben pasar antes de dar algo por terminado. |
 | **Regresión** | Un error nuevo en algo que ya funcionaba. |
-| **`flutter analyze`** | El comando que corre el lint en un proyecto Flutter. |
+| **`dart analyze`** | El comando que corre el revisor automático y reporta problemas. **Es el que usamos**, porque `flutter analyze` no ejecuta los plugins del analizador (entre ellos el de Riverpod). |
+| **`flutter analyze`** | Parecido al anterior, pero no ejecuta los plugins. Por eso no lo usamos como puerta de calidad. |
 | **`flutter test`** | El comando que corre todas las pruebas. |
 | **`dart format`** | El comando que ordena el formato del código automáticamente. |
 
