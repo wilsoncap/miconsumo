@@ -127,11 +127,137 @@ abstract class AppLocalizations {
   /// **'Ocurrió un error inesperado. Inténtalo de nuevo.'**
   String get errorInesperado;
 
-  /// TEMPORAL: mensaje de la pantalla provisional que sustituyen las pantallas de la historia 1. Se elimina en T037.
+  /// Título de la pantalla que lista los servicios del hogar.
   ///
   /// In es, this message translates to:
-  /// **'Tema, base de datos y navegación en marcha.'**
-  String get pantallaTemporalMensaje;
+  /// **'Mis servicios'**
+  String get listaServiciosTitulo;
+
+  /// Título del estado vacío cuando no hay ningún servicio registrado.
+  ///
+  /// In es, this message translates to:
+  /// **'Todavía no tienes servicios'**
+  String get listaServiciosVaciaTitulo;
+
+  /// Explicación del estado vacío del listado.
+  ///
+  /// In es, this message translates to:
+  /// **'Registra la luz, el agua o el gas para empezar a medir su consumo.'**
+  String get listaServiciosVaciaMensaje;
+
+  /// Acción del estado vacío para crear el primer servicio.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar el primero'**
+  String get listaServiciosVaciaAccion;
+
+  /// Acción para crear un servicio nuevo desde el listado.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar servicio'**
+  String get listaServiciosAgregar;
+
+  /// Etiqueta que marca un servicio desactivado.
+  ///
+  /// In es, this message translates to:
+  /// **'Inactivo'**
+  String get servicioInactivo;
+
+  /// Indicación de que el servicio tiene etiqueta de contrato, para accesibilidad.
+  ///
+  /// In es, this message translates to:
+  /// **'Con número de contrato'**
+  String get servicioConContrato;
+
+  /// Título de la pantalla cuando se crea un servicio.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo servicio'**
+  String get detalleServicioTituloNuevo;
+
+  /// Título de la pantalla cuando se edita un servicio existente.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar servicio'**
+  String get detalleServicioTituloEditar;
+
+  /// Etiqueta del campo de nombre.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre del servicio'**
+  String get campoNombreEtiqueta;
+
+  /// Texto de ayuda del campo de nombre.
+  ///
+  /// In es, this message translates to:
+  /// **'Por ejemplo: Luz, Agua, Gas'**
+  String get campoNombreAyuda;
+
+  /// Etiqueta del selector de unidad.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidad de medida'**
+  String get campoUnidadEtiqueta;
+
+  /// Explicación de por qué el selector de unidad está deshabilitado (FR-006).
+  ///
+  /// In es, this message translates to:
+  /// **'No puedes cambiar la unidad porque este servicio ya tiene mediciones registradas.'**
+  String get campoUnidadBloqueada;
+
+  /// Etiqueta del campo opcional de número de contrato.
+  ///
+  /// In es, this message translates to:
+  /// **'Número de contrato (opcional)'**
+  String get campoEtiquetaContratoEtiqueta;
+
+  /// Aclaración de que la etiqueta de contrato es local y opcional (FR-013, FR-014).
+  ///
+  /// In es, this message translates to:
+  /// **'Aparece en tu factura. Se queda en este teléfono.'**
+  String get campoEtiquetaContratoAyuda;
+
+  /// Mensaje cuando el nombre está vacío.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe un nombre para el servicio.'**
+  String get falloNombreVacio;
+
+  /// Mensaje cuando el nombre es demasiado largo.
+  ///
+  /// In es, this message translates to:
+  /// **'El nombre no puede superar los 60 caracteres.'**
+  String get falloNombreDemasiadoLargo;
+
+  /// Mensaje cuando el nombre ya existe (sin distinguir mayúsculas ni acentos).
+  ///
+  /// In es, this message translates to:
+  /// **'Ya tienes un servicio con ese nombre.'**
+  String get falloNombreDuplicado;
+
+  /// Mensaje cuando no se seleccionó unidad.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige la unidad en la que se mide el consumo.'**
+  String get falloUnidadRequerida;
+
+  /// Mensaje cuando se intenta cambiar la unidad con historial (FR-006).
+  ///
+  /// In es, this message translates to:
+  /// **'No puedes cambiar la unidad porque este servicio ya tiene mediciones registradas.'**
+  String get falloUnidadInmutable;
+
+  /// Mensaje cuando el servicio ya no existe.
+  ///
+  /// In es, this message translates to:
+  /// **'No encontramos ese servicio.'**
+  String get falloServicioNoEncontrado;
+
+  /// Mensaje cuando falla la base de datos.
+  ///
+  /// In es, this message translates to:
+  /// **'No pudimos guardar los cambios. Inténtalo de nuevo.'**
+  String get falloAlmacenamiento;
 }
 
 class _AppLocalizationsDelegate

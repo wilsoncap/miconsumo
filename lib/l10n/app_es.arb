@@ -26,8 +26,113 @@
     "description": "Mensaje genérico cuando falla una operación."
   },
 
-  "pantallaTemporalMensaje": "Tema, base de datos y navegación en marcha.",
-  "@pantallaTemporalMensaje": {
-    "description": "TEMPORAL: mensaje de la pantalla provisional que sustituyen las pantallas de la historia 1. Se elimina en T037."
+  "listaServiciosTitulo": "Mis servicios",
+  "@listaServiciosTitulo": {
+    "description": "Título de la pantalla que lista los servicios del hogar."
+  },
+
+  "listaServiciosVaciaTitulo": "Todavía no tienes servicios",
+  "@listaServiciosVaciaTitulo": {
+    "description": "Título del estado vacío cuando no hay ningún servicio registrado."
+  },
+
+  "listaServiciosVaciaMensaje": "Registra la luz, el agua o el gas para empezar a medir su consumo.",
+  "@listaServiciosVaciaMensaje": {
+    "description": "Explicación del estado vacío del listado."
+  },
+
+  "listaServiciosVaciaAccion": "Registrar el primero",
+  "@listaServiciosVaciaAccion": {
+    "description": "Acción del estado vacío para crear el primer servicio."
+  },
+
+  "listaServiciosAgregar": "Agregar servicio",
+  "@listaServiciosAgregar": {
+    "description": "Acción para crear un servicio nuevo desde el listado."
+  },
+
+  "servicioInactivo": "Inactivo",
+  "@servicioInactivo": {
+    "description": "Etiqueta que marca un servicio desactivado."
+  },
+
+  "servicioConContrato": "Con número de contrato",
+  "@servicioConContrato": {
+    "description": "Indicación de que el servicio tiene etiqueta de contrato, para accesibilidad."
+  },
+
+  "detalleServicioTituloNuevo": "Nuevo servicio",
+  "@detalleServicioTituloNuevo": {
+    "description": "Título de la pantalla cuando se crea un servicio."
+  },
+
+  "detalleServicioTituloEditar": "Editar servicio",
+  "@detalleServicioTituloEditar": {
+    "description": "Título de la pantalla cuando se edita un servicio existente."
+  },
+
+  "campoNombreEtiqueta": "Nombre del servicio",
+  "@campoNombreEtiqueta": {
+    "description": "Etiqueta del campo de nombre."
+  },
+
+  "campoNombreAyuda": "Por ejemplo: Luz, Agua, Gas",
+  "@campoNombreAyuda": {
+    "description": "Texto de ayuda del campo de nombre."
+  },
+
+  "campoUnidadEtiqueta": "Unidad de medida",
+  "@campoUnidadEtiqueta": {
+    "description": "Etiqueta del selector de unidad."
+  },
+
+  "campoUnidadBloqueada": "No puedes cambiar la unidad porque este servicio ya tiene mediciones registradas.",
+  "@campoUnidadBloqueada": {
+    "description": "Explicación de por qué el selector de unidad está deshabilitado (FR-006)."
+  },
+
+  "campoEtiquetaContratoEtiqueta": "Número de contrato (opcional)",
+  "@campoEtiquetaContratoEtiqueta": {
+    "description": "Etiqueta del campo opcional de número de contrato."
+  },
+
+  "campoEtiquetaContratoAyuda": "Aparece en tu factura. Se queda en este teléfono.",
+  "@campoEtiquetaContratoAyuda": {
+    "description": "Aclaración de que la etiqueta de contrato es local y opcional (FR-013, FR-014)."
+  },
+
+  "falloNombreVacio": "Escribe un nombre para el servicio.",
+  "@falloNombreVacio": {
+    "description": "Mensaje cuando el nombre está vacío."
+  },
+
+  "falloNombreDemasiadoLargo": "El nombre no puede superar los 60 caracteres.",
+  "@falloNombreDemasiadoLargo": {
+    "description": "Mensaje cuando el nombre es demasiado largo."
+  },
+
+  "falloNombreDuplicado": "Ya tienes un servicio con ese nombre.",
+  "@falloNombreDuplicado": {
+    "description": "Mensaje cuando el nombre ya existe (sin distinguir mayúsculas ni acentos)."
+  },
+
+  "falloUnidadRequerida": "Elige la unidad en la que se mide el consumo.",
+  "@falloUnidadRequerida": {
+    "description": "Mensaje cuando no se seleccionó unidad."
+  },
+
+  "falloUnidadInmutable": "No puedes cambiar la unidad porque este servicio ya tiene mediciones registradas.",
+  "@falloUnidadInmutable": {
+    "description": "Mensaje cuando se intenta cambiar la unidad con historial (FR-006)."
+  },
+
+  "falloServicioNoEncontrado": "No encontramos ese servicio.",
+  "@falloServicioNoEncontrado": {
+    "description": "Mensaje cuando el servicio ya no existe."
+  },
+
+  "falloAlmacenamiento": "No pudimos guardar los cambios. Inténtalo de nuevo.",
+  "@falloAlmacenamiento": {
+    "description": "Mensaje cuando falla la base de datos."
   }
 }

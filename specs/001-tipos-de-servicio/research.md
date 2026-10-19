@@ -30,6 +30,11 @@ tecnología y las prácticas asociadas, con la alternativa que se descartó y el
   paquete durante la compilación, así que **la primera compilación necesita red**. El funcionamiento en
   tiempo de ejecución sigue siendo por completo sin conexión, de modo que el Principio I no se ve
   afectado.
+- **Lecturas observadas, no consultadas**: el repositorio expone el listado como un **flujo**
+  (`observarServicios`) construido sobre `watch()` de Drift, en lugar de una consulta puntual. Así la
+  interfaz se actualiza sola ante cualquier cambio, sin depender de que cada pantalla se acuerde de
+  recargar. Se adoptó tras detectar que, con una consulta puntual, el listado se quedaba con datos
+  viejos al crear un servicio y volver a él.
 - **Alternatives considered**: `sqflite` (SQL en cadenas, sin tipado ni migraciones verificables);
   `isar`/`objectbox` (excelentes en rendimiento pero atan a su propio modelo y complican mantener el
   dominio puro); `shared_preferences` (no sirve para datos relacionales con historial).

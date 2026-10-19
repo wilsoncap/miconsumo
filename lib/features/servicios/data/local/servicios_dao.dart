@@ -21,6 +21,18 @@ class ServiciosDao extends DatabaseAccessor<AppDatabase>
     return consulta.get();
   }
 
+  /// Flujo con todos los servicios.
+  ///
+  /// Vuelve a emitir ante cualquier cambio en la tabla, venga de donde venga.
+  /// Es lo que permite que el listado se actualice solo y no se quede con una
+  /// foto vieja de los datos.
+  Stream<List<Servicio>> observar() {
+    final SimpleSelectStatement<$ServiciosTable, Servicio> consulta = select(
+      servicios,
+    )..orderBy([(t) => OrderingTerm.asc(t.nombreNormalizado)]);
+    return consulta.watch();
+  }
+
   /// Un servicio por su identificador, o nulo si no existe.
   Future<Servicio?> buscarPorId(int id) {
     final SimpleSelectStatement<$ServiciosTable, Servicio> consulta = select(

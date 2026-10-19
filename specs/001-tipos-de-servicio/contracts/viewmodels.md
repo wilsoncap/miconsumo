@@ -14,13 +14,13 @@ que estas pruebas se pueden escribir sin `WidgetTester`.
 
 ```text
 ListaServiciosEstado (sealed)
-├── Cargando
-├── Vacio
-├── ConDatos(servicios: List<ServicioEnLista>, errorParcial: Fallo?)
-└── Error(fallo: Fallo)
+├── ListaCargando
+├── ListaVacia
+├── ListaConDatos(servicios: List<ServicioEnLista>, errorParcial: MotivoDeFallo?)
+└── ListaConError(motivo: MotivoDeFallo)
 ```
 
-- `Vacio` es distinto de `ConDatos` con lista vacía: la interfaz debe poder mostrar un estado vacío
+- `ListaVacia` es distinto de `ListaConDatos` con lista vacía: la interfaz debe poder mostrar un estado vacío
   con una acción para crear el primer servicio, no una lista en blanco.
 - `errorParcial` permite informar de que una acción (por ejemplo desactivar) falló sin perder los datos
   ya cargados en pantalla.
@@ -29,9 +29,15 @@ ListaServiciosEstado (sealed)
 
 | Intención | Efecto | Requisito |
 |---|---|---|
-| `cargar()` | Carga la lista; emite `Cargando` y luego `ConDatos` o `Vacio` | FR-011 |
-| `desactivar(id)` | Desactiva el servicio y recarga | FR-007 |
-| `reactivar(id)` | Reactiva el servicio y recarga | FR-010 |
+| `reintentar()` | Vuelve a suscribirse al flujo de datos | FR-011 |
+| `desactivar(id)` | Desactiva el servicio; el flujo refleja el cambio | FR-007 |
+| `reactivar(id)` | Reactiva el servicio; el flujo refleja el cambio | FR-010 |
+
+### Cómo se mantiene al día
+
+El ViewModel se **suscribe** al flujo de datos del repositorio en lugar de pedir una foto una vez. No
+existe ninguna intención de "recargar": cualquier cambio, venga de donde venga, vuelve a emitir y el
+listado se actualiza solo. `reintentar()` solo sirve para volver a suscribirse cuando el flujo falló.
 
 ### Datos que ve la View
 
@@ -45,11 +51,11 @@ dominio: así no puede acceder a campos que no le corresponden ni depender de la
 
 ```text
 DetalleServicioEstado (sealed)
-├── Cargando
-├── Nuevo(formulario, guardando: bool)
-├── Existente(servicio, formulario, guardando: bool, unidadBloqueada: bool)
-├── Guardado(id: identificador)
-└── Error(fallo: Fallo)
+├── DetalleCargando
+├── DetalleNuevo(formulario: FormularioDeServicio, guardando: bool)
+├── DetalleExistente(id: int, formulario, guardando: bool, unidadBloqueada: bool)
+├── DetalleGuardado(id: int)
+└── DetalleConError(motivo: MotivoDeFallo)
 ```
 
 - `unidadBloqueada` es verdadero cuando el servicio ya tiene mediciones: la View DEBE deshabilitar el
@@ -64,19 +70,25 @@ DetalleServicioEstado (sealed)
 |---|---|---|
 | `cargar(id)` | Carga el servicio | — |
 | `iniciarNuevo()` | Prepara un formulario vacío | FR-001 |
-| `cambiarNombre(texto)` | Actualiza el formulario y revalida | FR-002, FR-003 |
+| `cambiarNombre(texto)` | Actualiza el formulario y limpia el error de nombre | FR-002, FR-003 |
 | `cambiarUnidad(unidad)` | Actualiza el formulario (no disponible si está bloqueada) | FR-004, FR-005, FR-006 |
 | `cambiarEtiquetaContrato(texto)` | Actualiza la etiqueta opcional | FR-013 |
-| `guardar()` | Persiste y emite `Guardado` o `Error` | FR-001 |
+| `guardar()` | Persiste y emite `DetalleGuardado` o `DetalleConError` | FR-001 |
 
 ### Reglas del contrato
 
 - **La View no valida**: todos los mensajes de error vienen del formulario del ViewModel. Si la View
   validara, existirían dos fuentes de verdad y podrían divergir.
-- **Guardar no navega**: el ViewModel emite `Guardado` y es la View quien decide a dónde ir. Así el
-  ViewModel no depende de `go_router`.
+- **El estado guarda el motivo, no el texto**: el ViewModel no puede traducir nada porque no importa
+  Flutter. Guarda un `MotivoDeFallo` y es la View quien resuelve el texto con `mensajeDeFallo` y los
+  recursos ARB.
+- **Guardar no navega**: el ViewModel emite `DetalleGuardado` y es la View quien decide a dónde ir. Así
+  el ViewModel no depende de `go_router`.
 - **Un solo estado de guardado**: `guardando` evita el doble envío mientras la operación está en curso.
-- **Los errores de negocio se muestran, no se lanzan**: `NombreVacio`, `NombreDuplicado` y
-  `UnidadInmutable` llegan como valores dentro del estado, con el texto ya resuelto para el usuario.
+- **La validación ocurre al guardar, no al escribir**: `cambiarNombre` limpia el error anterior en
+  lugar de revalidar en cada pulsación, que sería ruidoso. Al pulsar Guardar se validan nombre y unidad
+  y se marcan los errores por campo.
+- **La View no recibe la entidad de dominio**: el listado recibe `ServicioEnLista` y el detalle recibe
+  el formulario y el identificador. Así la interfaz no depende de la forma del dominio.
 - **No hay intención de eliminar**: la interfaz no ofrece borrar un servicio, en coherencia con
   FR-015.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:miconsumo/core/ui/theme/app_tokens.dart';
-import 'package:miconsumo/l10n/app_localizations.dart';
+import 'package:miconsumo/features/servicios/presentation/view/detalle_servicio_page.dart';
+import 'package:miconsumo/features/servicios/presentation/view/lista_servicios_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
@@ -31,44 +31,25 @@ GoRouter appRouter(Ref ref) => GoRouter(
     GoRoute(
       path: AppRutas.servicios,
       builder: (BuildContext context, GoRouterState state) =>
-          const PantallaTemporal(),
+          const ListaServiciosPage(),
       routes: <RouteBase>[
+        // 'nuevo' se declara antes que ':id' para que no lo capture el
+        // parámetro.
         GoRoute(
           path: 'nuevo',
           builder: (BuildContext context, GoRouterState state) =>
-              const PantallaTemporal(),
+              const DetalleServicioPage(),
         ),
         GoRoute(
           path: ':${AppRutas.parametroId}',
           builder: (BuildContext context, GoRouterState state) =>
-              const PantallaTemporal(),
+              DetalleServicioPage(
+                servicioId: int.tryParse(
+                  state.pathParameters[AppRutas.parametroId] ?? '',
+                ),
+              ),
         ),
       ],
     ),
   ],
 );
-
-/// TEMPORAL: pantalla provisional que sustituyen las pantallas de la historia 1.
-///
-/// Existe para que el proyecto arranque y se pueda comprobar que el tema, la
-/// base de datos y la navegación funcionan. Se elimina en T037.
-class PantallaTemporal extends StatelessWidget {
-  /// Construye la pantalla provisional.
-  const PantallaTemporal({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context).appTitle)),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(context.tokens.espacioXl),
-          child: Text(
-            AppLocalizations.of(context).pantallaTemporalMensaje,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    );
-  }
-}

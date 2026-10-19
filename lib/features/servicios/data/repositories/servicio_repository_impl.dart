@@ -26,14 +26,17 @@ class ServicioRepositoryImpl implements ServicioRepository {
   final DateTime Function() _reloj;
 
   @override
-  Future<Resultado<List<TipoDeServicio>>> listarServicios() async {
+  Stream<Resultado<List<TipoDeServicio>>> observarServicios() async* {
     try {
-      final List<Servicio> filas = await _dao.listar();
-      return Exito<List<TipoDeServicio>>(
-        filas.map((Servicio fila) => fila.aDominio()).toList(growable: false),
-      );
+      await for (final List<Servicio> filas in _dao.observar()) {
+        yield Exito<List<TipoDeServicio>>(
+          filas.map((Servicio fila) => fila.aDominio()).toList(growable: false),
+        );
+      }
     } catch (_) {
-      return const Fallo<List<TipoDeServicio>>(MotivoDeFallo.almacenamiento);
+      // El flujo no se rompe: emite el fallo para que la interfaz pueda
+      // ofrecer reintentar.
+      yield const Fallo<List<TipoDeServicio>>(MotivoDeFallo.almacenamiento);
     }
   }
 

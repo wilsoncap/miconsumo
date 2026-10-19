@@ -11,7 +11,11 @@ import '../value_objects/unidad_medida.dart';
 /// NO existe operación de borrado: un servicio solo se desactiva (FR-015).
 abstract interface class ServicioRepository {
   /// Servicios activos e inactivos, en orden estable por nombre.
-  Future<Resultado<List<TipoDeServicio>>> listarServicios();
+  ///
+  /// Es un FLUJO, no una foto: vuelve a emitir cada vez que los datos cambian,
+  /// sin importar quién los haya cambiado ni desde qué pantalla. Así el listado
+  /// no puede quedarse desactualizado.
+  Stream<Resultado<List<TipoDeServicio>>> observarServicios();
 
   /// Un servicio concreto por su identificador.
   Future<Resultado<TipoDeServicio>> obtenerServicio(int id);
