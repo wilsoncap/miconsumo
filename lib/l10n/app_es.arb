@@ -1,0 +1,117 @@
+{
+  "@@locale": "es",
+  "appTitle": "Mi Consumo",
+  "misServicios": "Mis servicios",
+  "nuevoServicio": "Nuevo servicio",
+  "editarServicio": "Editar servicio",
+  "mediciones": "Mediciones",
+  "registrarLectura": "Registrar lectura",
+  "consumo": "Consumo",
+  "fotoDelMedidor": "Foto del medidor",
+  "guardar": "Guardar",
+  "registrar": "Registrar",
+  "reintentar": "Reintentar",
+  "cancelar": "Cancelar",
+  "cerrar": "Cerrar",
+  "agregarServicio": "Agregar servicio",
+  "registrarElPrimero": "Registrar el primero",
+  "registrarLaPrimera": "Registrar la primera",
+  "registrarOtra": "Registrar otra",
+  "verMediciones": "Ver mediciones",
+  "verFoto": "Ver foto",
+  "tomarFoto": "Tomar foto",
+  "elegirGaleria": "Elegir de la galería",
+  "quitarFoto": "Quitar la foto",
+  "fotoLista": "Foto lista para guardar",
+  "guardarIgual": "Guardar igual",
+  "inactivo": "Inactivo",
+  "desactivar": "Desactivar",
+  "reactivar": "Reactivar",
+  "conContrato": "Con número de contrato",
+  "conFoto": "Con foto del medidor",
+  "sinConsumoAun": "Sin consumo aún",
+  "reemplazada": "Reemplazada",
+  "cargando": "Cargando…",
+  "errorCarga": "No pudimos cargar la información. Intenta de nuevo.",
+  "serviciosVacioTitulo": "Todavía no tienes servicios",
+  "serviciosVacioMensaje": "Registra la luz, el agua o el gas para empezar a medir su consumo.",
+  "nombreServicio": "Nombre del servicio",
+  "nombreAyuda": "Por ejemplo: Luz, Agua, Gas",
+  "nombreVacioError": "Escribe un nombre para el servicio.",
+  "nombreDuplicadoError": "Ya tienes un servicio con ese nombre.",
+  "unidadMedida": "Unidad de medida",
+  "unidadBloqueada": "No puedes cambiar la unidad porque este servicio ya tiene mediciones registradas.",
+  "contratoOpcional": "Número de contrato (opcional)",
+  "contratoAyuda": "Aparece en tu factura. Se queda en este teléfono.",
+  "servicioInactivoAviso": "Ese servicio está desactivado, así que no admite lecturas.",
+  "lecturasVacioTitulo": "Todavía no hay lecturas",
+  "lecturasVacioMensaje": "Anota el número que muestra tu medidor para empezar a ver tu consumo.",
+  "fechaLectura": "Fecha de la lectura: {fecha}",
+  "lecturaMedidor": "Lectura del medidor",
+  "lecturaAyuda": "El número que muestra el contador",
+  "fotoOpcionalTitulo": "Foto del medidor (opcional)",
+  "fotoRefuerza": "Una foto refuerza tu evidencia.",
+  "lecturaMenorTitulo": "La lectura es menor que la anterior",
+  "lecturaMenorMensaje": "Anotaste {valor} {unidad} y la lectura anterior fue {anterior} {unidad}. Puede pasar si cambiaron el medidor. ¿La guardamos igual?",
+  "fechaFuturaError": "No puedes registrar una lectura con una fecha futura.",
+  "valorInvalidoError": "Escribe un número válido para la lectura.",
+  "correccionAviso": "Ya hay una lectura para ese día. Al registrar, la anterior quedará como Reemplazada.",
+  "esteMes": "Este mes",
+  "mesAnterior": "Mes anterior",
+  "mesSiguiente": "Mes siguiente",
+  "variacion": "Variación",
+  "promedioDiario": "Promedio diario",
+  "diaMayorConsumo": "Día de mayor consumo",
+  "sinComparacion": "Sin comparación",
+  "consumoNegativoAviso": "Hay un consumo negativo. Revisa si el medidor se reinició o si corregiste una lectura.",
+  "consumoSinLecturasTitulo": "Sin lecturas todavía",
+  "consumoSinLecturasMensaje": "Registra la lectura de tu medidor para empezar a ver tu consumo.",
+  "consumoUnaLecturaTitulo": "Hace falta una segunda lectura",
+  "consumoUnaLecturaMensaje": "Con una sola lectura no hay consumo que calcular. Registra otra y verás aquí tu consumo en {unidad}.",
+  "consumoMesSinLecturasTitulo": "Este mes no tiene lecturas",
+  "consumoMesSinLecturasMensaje": "Registra una lectura para este período o cambia de mes para ver otro consumo.",
+  "consumoMesSinConsumoTitulo": "Todavía no hay consumo este mes",
+  "consumoMesSinConsumoMensaje": "La primera lectura del mes no produce consumo. Registra otra lectura para verlo aquí.",
+  "fotoNoDisponible": "La foto ya no está disponible.",
+  "consumoUnDia": "{valor} {unidad}",
+  "consumoVariosDias": "{dias} días · {valor} {unidad}",
+  "chartTooltip": "{fecha}: {valor} {unidad}",
+  "consumoEtiqueta": "Consumo de {fecha}: {valor} {unidad}",
+  "@consumoUnDia": {
+    "placeholders": {
+      "valor": {"type": "String"},
+      "unidad": {"type": "String"}
+    }
+  },
+  "@consumoVariosDias": {
+    "placeholders": {
+      "dias": {"type": "int"},
+      "valor": {"type": "String"},
+      "unidad": {"type": "String"}
+    }
+  },
+  "@chartTooltip": {
+    "placeholders": {
+      "fecha": {"type": "String"},
+      "valor": {"type": "String"},
+      "unidad": {"type": "String"}
+    }
+  },
+  "@lecturaMenorMensaje": {
+    "placeholders": {
+      "valor": {"type": "String"},
+      "anterior": {"type": "String"},
+      "unidad": {"type": "String"}
+    }
+  },
+  "@fechaLectura": {
+    "placeholders": {
+      "fecha": {"type": "String"}
+    }
+  },
+  "@consumoUnaLecturaMensaje": {
+    "placeholders": {
+      "unidad": {"type": "String"}
+    }
+  }
+}
